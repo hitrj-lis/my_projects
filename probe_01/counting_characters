@@ -1,0 +1,56 @@
+# counting_characters - Подсчёт знаков
+# 2018
+
+info = '\ninfo' \
+       '\n     ОПЕРАТОР             ОПИСАНИЕ\n' \
+       '\n' \
+       '     info==info           Вывод информации\n' \
+       '     exit==exit           Выход из программы\n' \
+       '     swear==swear         Вывод встроенного списка матерных слов\n'
+swear_list = ['хуй', 'Хуй', 'ХУЙ' 'пизда ', 'Пизда', 'ПИЗДА', 'блядь', 'Блядь', 'БЛЯДЬ', 'пидор', 'Пидор', 'ПИДОР',
+              'педик', 'Педик', 'ПЕДИК', 'ебать', 'Ебать', 'ЕБАТЬ', 'залупа', 'Залупа', 'ЗАЛУПА', 'ёбаный', 'Ёбаный',
+              'ЁБАНЫЙ', 'бля', 'Бля', 'БЛЯ', 'пиздец', 'Пиздец', 'ПИЗДЕЦ', 'распиздяй', 'Распиздяй', 'РАСПИЗДЯЙ']
+while 1 == 1:
+    print('counting_characters_01 (2018)\n')
+    text = str(input('Для  вывода  информации  введите (инфо==info)\n'
+                     'Для выхода из программы введите (выход==exit)\n'
+                     '\n'
+                     'Введите текст:\n'))
+    if text == 'exit==exit':
+        break
+    elif text == 'info==info':
+        print(info)
+    elif text == 'swear==swear':
+        print(swear_list)
+
+    else:
+        text_split = text.split(' ')
+        mat = 0
+        vowel = 0
+        number = 0
+        space = 0
+        punctuation = 0
+        for simvol in text:
+            if (simvol in 'аеёиоуыэюя'):
+                vowel += 1
+            elif (simvol in '1234567890'):
+                number += 1
+            elif (simvol in ' '):
+                space += 1
+            elif (simvol in ',.-_()=+:%/"*!?#;:&№[]{}\$`~|') or (simvol in "'"):
+                punctuation += 1
+        for i in text_split:
+            if i in swear_list:
+                mat = mat + 1
+            # TODO СДЕЛАТЬ ПОДСЧЁТ СЛОВ (идея - сделать список корней матерных слов и список приставок,суфиксов,
+            # TODO окончаний)
+            # TODO ТАК ЖЕ УЧЕСТЬ ДВУСОСТАВНОСТЬ СЛОВ (многокорневые слова) И ЗАПИСЬ ЧЕРЕЗ ДЕФИС
+        print('матерных слов', mat)
+        print('гласных ', vowel)
+        print('цифр ', number)
+        print('пробелов ', space)
+        print('знаков ', punctuation)
+        print('всего символов ', len(text))
+        print('')
+        # TODO ВЫВОД КОЛИЧЕСТВА СЛОВ
+        # TODO ОТСТРАИВАЕМЫЕ ПАРАМЕТРЫ ВЫВОДА
